@@ -10,10 +10,7 @@ const MenuItem = () => {
           <Link href={'/about'}>About</Link>
         </li>
         <li className="py-2 px-8 flex">
-          <Link href={'/admin/create-event'}>create Event</Link>
-        </li>
-        <li className="py-2 px-8 flex">
-          <Link href={'/admin/create-ticket'}>create Ticket</Link>
+          <Link href={'/admin'}>Admin</Link>
         </li>
       </ul>
     </div>
@@ -21,4 +18,3 @@ const MenuItem = () => {
 }
 
 export default MenuItem;
-

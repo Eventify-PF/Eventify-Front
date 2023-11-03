@@ -2,17 +2,18 @@
 import React from 'react';
 import Container from '../Container';
 import Logo from '../Logo';
-import MenuItem from './NavbarMenu';
+import MenuItem from './MenuItem';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 const Navbar = () => {
-	const { numberCart } = useSelector((state) => state.ticketReducer)
+	const cartState = useSelector((state) => state.cartReducer);
+    const { numberCart} = cartState;
 	const router = useRouter();
 
 	
 	return ( 
-		<div className="fixed w-full bg-gray-800 z-10 shadow-sm" >
+		<div className="fixed w-full bg-gray-800 z-10 shadow-sm">
 			<div className="py-4 border-b-[1px]">
 				<Container>
 					<div className="flex flex-row items-center justify-between gap-3 md:gap-0">
@@ -53,6 +54,3 @@ const Navbar = () => {
 
 
 export default Navbar;
-
-
- 
