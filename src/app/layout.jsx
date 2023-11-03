@@ -18,12 +18,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
      <body className={font.className}>
+          <Providers>
         <Navbar/>
         <div className="bg-gray-300 min-h-screen pb-20 pt-28">
-          <Providers>
             {children}
-          </Providers>
         </div>
+          </Providers>
       </body>
     </html>
   );
