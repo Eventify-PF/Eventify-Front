@@ -4,11 +4,13 @@ import thunk from "redux-thunk";
 import eventReducer from './reducers/eventReducer';
 import eventTypeReducer from './reducers/eventTypeReducer';
 import ticketReducer from './reducers/ticketReducer';
+import cartReducer from './reducers/cartReducer';
 
 const rootReducer = combineReducers({
     eventReducer,
     eventTypeReducer,
-    ticketReducer
+    ticketReducer,
+    cartReducer
 },);
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
