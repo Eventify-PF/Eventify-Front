@@ -52,6 +52,7 @@ const TicketPage = () => {
   };
 
   const handleSubmit = (event) => {
+     console.log(event + "Error")
     event.preventDefault();
     try {
       dispatch(createTicket(ticket));

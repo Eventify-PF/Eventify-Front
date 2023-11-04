@@ -2,7 +2,7 @@
 import React from 'react';
 import Container from '../Container';
 import Logo from '../Logo';
-import NavbarMenu from './NavbarMenu';
+import MenuItem from './MenuItem';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Login from '../../app/api/auth/loginButton'
@@ -16,7 +16,10 @@ import { useState } from 'react';
 
 
 
+import { useSelector } from 'react-redux';
 const Navbar = () => {
+	const cartState = useSelector((state) => state.cartReducer);
+    const { numberCart} = cartState;
 	const router = useRouter();
   const { user, isLoading } = useUser();
   const dispatch = useDispatch();
@@ -49,11 +52,12 @@ const Navbar = () => {
 				<Container>
 					<div className="flex flex-row items-center justify-between gap-3 md:gap-0">
 						<Logo />
-						<NavbarMenu/>
+						<MenuItem/>
 						<div className="relative">
 							<div className="mt-2 sm:mt-0 sm:flex md:order-2">
 								<div className="flex items-center justify-between">
 									<div className="text-gray-600 focus:outline-none mx-7 py-1.6 px-6 sm:mx-0">
+									<div className='flex flex-row gap-2'>
 										<Image
 											onClick={() => router.push('/cart')}
 											src="/images/carrito.png" 
@@ -61,6 +65,10 @@ const Navbar = () => {
 											width="25" 
 											alt="Logo" 
 										/>
+										<span className='font-bold text-red-500 inline-block'>
+                  						    {numberCart}
+                						</span>
+									</div>
 									</div>
 								</div>
 								{isLoading ? (
