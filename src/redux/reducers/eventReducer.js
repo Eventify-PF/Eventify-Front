@@ -9,10 +9,12 @@ import {
   FILTER_EVENT_DATE,
   CREATE_EVENT,
   GET_EVENTS,
+  GET_ALL_EVENTS,
   SET_CURRENT_PAGE,
 } from "../action-type/eventConstans";
 
 const initialState = {
+  allEvents: [],
   events: [],
   eventsBackup: [],
   eventsFilter: [],
@@ -31,6 +33,8 @@ const eventReducer = (state = initialState, action) => {
         events: action.payload,
         eventsFilter: action.payload,
       };
+    case GET_ALL_EVENTS:
+      return { ...state, allEvents: action.payload };
     case CREATE_EVENT:
       return {
         ...state,
@@ -74,27 +78,28 @@ const eventReducer = (state = initialState, action) => {
         error: action.payload,
       };
     case FILTER_EVENT_DATE:
-     
-  
       let filteredEventsDate;
-  
+
       if (!action.payload) {
         filteredEventsDate = state.eventsBackup;
       } else if (state.filteredType.length === 0) {
-        filteredEventsDate = state.eventsBackup.filter((event) => event.date === action.payload);
+        filteredEventsDate = state.eventsBackup.filter(
+          (event) => event.date === action.payload
+        );
       } else {
-        filteredEventsDate = state.filteredType.filter((event) => event.date === action.payload);
+        filteredEventsDate = state.filteredType.filter(
+          (event) => event.date === action.payload
+        );
       }
-  
+
       return {
         ...state,
         events: filteredEventsDate,
         doubleFilter: filteredEventsDate,
       };
     case FILTER_EVENTTYPE:
-       
       const typeId = parseInt(action.payload);
-  
+
       if (action.payload === "all") {
         return {
           ...state,
@@ -102,18 +107,22 @@ const eventReducer = (state = initialState, action) => {
         };
       } else {
         let filterEvents;
-  
+
         if (state.doubleFilter.length > 0) {
-          filterEvents = state.doubleFilter.filter((event) => event.EventTypeId === typeId);
+          filterEvents = state.doubleFilter.filter(
+            (event) => event.EventTypeId === typeId
+          );
         } else {
-          filterEvents = state.eventsBackup.filter((event) => event.EventTypeId === typeId);
+          filterEvents = state.eventsBackup.filter(
+            (event) => event.EventTypeId === typeId
+          );
         }
-  
+
         if (filterEvents.length === 0) {
           alert("No hay eventos con esas especificaciones");
           return state;
         }
-  
+
         return {
           ...state,
           events: filterEvents,
@@ -134,4 +143,3 @@ const eventReducer = (state = initialState, action) => {
 };
 
 export default eventReducer;
-
