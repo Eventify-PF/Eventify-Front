@@ -5,8 +5,44 @@ import Logo from '../Logo';
 import NavbarMenu from './NavbarMenu';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Login from '../../app/api/auth/loginButton'
+import Logout from '../../app/api/auth/logoutButton'
+import { useUser } from '@auth0/nextjs-auth0/client';
+import { useDispatch } from 'react-redux';
+import { postUser } from '@/redux/action/userAction'; 
+import { useEffect } from 'react';
+import { useState } from 'react';
+
+
+
+
 const Navbar = () => {
 	const router = useRouter();
+  const { user, isLoading } = useUser();
+  const dispatch = useDispatch();
+  const [showEmailVerificationAlert, setShowEmailVerificationAlert] = useState(false);
+  
+
+  useEffect(() => {
+    if (user && !isLoading) {
+      
+      const userData = {
+        name: user.name,
+        email: user.email,
+        email_verified: user.email_verified,
+        
+      };
+      dispatch(postUser(userData));
+    }
+  }, [user, isLoading, dispatch]);
+
+  useEffect(() => {
+    if (user && !isLoading && !user.email_verified) {
+      setShowEmailVerificationAlert(true);
+    }
+  }, [user, isLoading]);
+  
+  
 	return ( 
 		<div className="fixed w-full bg-gray-800 z-10 shadow-sm">
 			<div className="py-4 border-b-[1px]">
@@ -27,14 +63,33 @@ const Navbar = () => {
 										/>
 									</div>
 								</div>
-								<button className="rounde mr-3 hidden border border-white py-1.5 px-6 text-center text-sm font-medium text-slate-300 focus:outline-none   md:inline-block rounded-lg">Login</button>
-								<button onClick={() => router.push('/register')}  className="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none   md:mr-0 md:inline-block rounded-lg">Register</button>
+								{isLoading ? (
+                    <div>Cargando...</div>
+                  ) : user ? (
+                    <div className="flex items-center"> {/* Contenedor flex para la imagen y el botón */}
+                      <img
+                        src={user.picture}
+                        alt="Avatar"
+                        className="w-10 h-10 rounded-full mr-2" 
+                      />
+                      <Logout /> 
+                    </div>
+                      
+                  ) : (
+                    <Login /> 
+                  )}
 							</div>
 						</div>
 					</div>
 				</Container>
 			</div>
-	    </div>
+      {showEmailVerificationAlert && (
+        <div className="bg-yellow-200 text-yellow-800 p-2 text-center">
+          Tu correo electrónico no ha sido verificado. Por favor, verifica tu correo electrónico para continuar.
+          <a href='/api/auth/logout' className="block bg-yellow-600 text-white font-semibold rounded px-4 py-2 mt-2 hover:bg-yellow-700">Aceptar</a>
+        </div>
+      )}
+	  </div>
 	  );
 	}
 
