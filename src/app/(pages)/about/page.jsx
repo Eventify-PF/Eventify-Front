@@ -1,5 +1,5 @@
 import React from 'react';
-import Carrusel from '@/components/Carrusel/carrusel';
+import Carrusel from '@/components/Carrusel/Carrusel';
 const AboutPage = () => {
   return (
     <div>
