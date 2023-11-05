@@ -10,6 +10,7 @@ export const FILTER_EVENTTYPE = "FILTER_EVENTTYPE";
 export const FILTER_EVENT_DATE = "FILTER_EVENT_DATE";
 
 export const CREATE_EVENT = "CREATE_EVENT";
+export const UPDATE_EVENT = "UPDATE_EVENT";
 export const GET_EVENTS = "GET_EVENTS";
 export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 

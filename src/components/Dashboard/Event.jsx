@@ -27,7 +27,7 @@ const Event = ({ event }) => {
         />
         <h2 className="text-lg font-bold mt-2">{event.title}</h2>
         <div className="mt-2">
-          <Link href={`/event/${event.id}`}>
+          <Link href={`/admin/modify-event/${event.id}`}>
             <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-3 rounded block w-full">
               Update Data
             </button>
@@ -91,7 +91,7 @@ const Event = ({ event }) => {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <Link href={`/event/ticket/${ticket.id}`}>
+                      <Link href={`/admin/modify-ticket/${event.id}`}>
                         <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-3 rounded">
                           MODIFICAR
                         </button>

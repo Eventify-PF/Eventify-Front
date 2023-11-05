@@ -11,6 +11,7 @@ import {
   GET_EVENTS,
   GET_ALL_EVENTS,
   SET_CURRENT_PAGE,
+  UPDATE_EVENT,
 } from "../action-type/eventConstans";
 import axios from "axios";
 
@@ -25,6 +26,13 @@ export const createEvent = (event) => {
   return async (dispatch) => {
     const { data } = await axios.post("/events/", event);
     return dispatch({ type: CREATE_EVENT, payload: data });
+  };
+};
+
+export const updateEvent = (event) => {
+  return async (dispatch) => {
+    const { data } = await axios.put("/events/", event);
+    return dispatch({ type: UPDATE_EVENT, payload: data });
   };
 };
 
