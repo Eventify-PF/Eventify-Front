@@ -5,8 +5,12 @@ import {
   SEARCH_EVENT_REQUEST,
   SEARCH_EVENT_SUCCESS,
   SEARCH_EVENT_FAILED,
-  FILTER_EVENTTYPE,
-  FILTER_EVENT_DATE,
+  FILTER_TYPE,
+  FILTER_TYPE_FAILURE,
+  FILTER_DATE,
+  FILTER_DATE_FAILURE,
+  FILTER_EVENTS,
+  FILTER_EVENTS_FAILURE,
   CREATE_EVENT,
   GET_EVENTS,
   GET_ALL_EVENTS,
@@ -17,9 +21,6 @@ const initialState = {
   allEvents: [],
   events: [],
   eventsBackup: [],
-  eventsFilter: [],
-  doubleFilter: [],
-  filteredType: [],
   pagination: {
     currentPage: 1,
   },
@@ -77,58 +78,49 @@ const eventReducer = (state = initialState, action) => {
         loading: true,
         error: action.payload,
       };
-    case FILTER_EVENT_DATE:
-      let filteredEventsDate;
+    case FILTER_TYPE:
+       if(action.payload === "all"){
+        return {
+          ...state,
+          events: state.eventsBackup
+        }
+       } else {
+         return {
+           ...state,
+           events: action.payload,
+         };
 
-      if (!action.payload) {
-        filteredEventsDate = state.eventsBackup;
-      } else if (state.filteredType.length === 0) {
-        filteredEventsDate = state.eventsBackup.filter(
-          (event) => event.date === action.payload
-        );
-      } else {
-        filteredEventsDate = state.filteredType.filter(
-          (event) => event.date === action.payload
-        );
-      }
-
+       }
+    case FILTER_TYPE_FAILURE:
       return {
         ...state,
-        events: filteredEventsDate,
-        doubleFilter: filteredEventsDate,
+        loading: false,
+        error: action.payload,
       };
-    case FILTER_EVENTTYPE:
-      const typeId = parseInt(action.payload);
-
-      if (action.payload === "all") {
-        return {
-          ...state,
-          events: state.eventsBackup,
-        };
-      } else {
-        let filterEvents;
-
-        if (state.doubleFilter.length > 0) {
-          filterEvents = state.doubleFilter.filter(
-            (event) => event.EventTypeId === typeId
-          );
-        } else {
-          filterEvents = state.eventsBackup.filter(
-            (event) => event.EventTypeId === typeId
-          );
-        }
-
-        if (filterEvents.length === 0) {
-          alert("No hay eventos con esas especificaciones");
-          return state;
-        }
-
-        return {
-          ...state,
-          events: filterEvents,
-          filteredType: filterEvents,
-        };
-      }
+    case FILTER_DATE:
+      return {
+        ...state,
+        events: action.payload,
+      };
+    case FILTER_DATE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case FILTER_EVENTS:
+      // Manejar la acción de filtro combinado por tipo y fecha
+      return {
+        ...state,
+        events: action.payload,
+      };
+    case FILTER_EVENTS_FAILURE:
+      // Manejar la acción de error en el filtro combinado por tipo y fecha
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     case SET_CURRENT_PAGE:
       return {
         ...state,

@@ -1,5 +1,6 @@
 import { Nunito } from 'next/font/google'
 import { Providers } from "@/redux/provider";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import './globals.css'
 
 export const metadata = {
@@ -12,13 +13,20 @@ const font = Nunito({
 });
 
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
      <body className={font.className}>
-        <Providers>
-           {children}
-        </Providers>
+     <UserProvider>
+        <div className="bg-gray-300 min-h-screen pb-20 pt-28">
+          <Providers>
+            <Navbar/>
+            {children}
+          </Providers>
+        </div>
+        </UserProvider>
       </body>
     </html>
-  )
+  );
+        
 }
