@@ -23,11 +23,14 @@ const EditEventForm = ({ detailEvent }) => {
     id: detailEvent.id,
     title: detailEvent.title,
     location: detailEvent.location,
-    date: detailEvent.date.split("T")[0],
+    date: detailEvent.date,
     description: detailEvent.description,
     image: detailEvent.image,
-    eventType: "",
+    eventType: detailEvent.eventType,
   });
+
+  console.log("ANTES: ", detailEvent.eventType);
+  console.log("DESPUES: ", event);
 
   const handleChange = (e) => {
     setEvent({ ...event, [e.target.name]: e.target.value });
@@ -141,7 +144,7 @@ const EditEventForm = ({ detailEvent }) => {
           onChange={handleChange}
           value={event.eventType}
         >
-          <option value="">Select Event Type</option>
+          <option value="">{event.eventType}</option>
           {allEventTypes?.map((elem) => (
             <option key={elem.id} value={elem.id}>
               {elem.name}

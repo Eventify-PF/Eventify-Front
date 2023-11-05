@@ -34,11 +34,7 @@ const Event = ({ event }) => {
           </Link>
           <button
             onClick={() => handleChange(event.id)}
-            className={`bg-${
-              statusEvent === "active" ? "green" : "red"
-            }-500 hover:bg-${
-              statusEvent === "active" ? "green" : "red"
-            }-700 text-white py-2 px-3 rounded block w-full mt-2`}
+            className="bg-gray-600 py-2 px-3 rounded block w-full text-white"
           >
             {statusEvent === "active" ? "Active" : "Inactive"}
           </button>
