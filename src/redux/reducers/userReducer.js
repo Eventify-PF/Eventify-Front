@@ -1,19 +1,18 @@
-import { CREATE_USER, GET_USER } from "../action-type/userConstans";
-
+import {POST_USER} from "./actions/action-types";
+  
 const initialState = {
-  users: [],
-  user: [],
-};
+    userDetail: [],
+} 
 
-const userReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case CREATE_USER:
-      return { ...state, users: [...state.users, action.payload] };
-    case GET_USER:
-      return { ...state, user: action.payload };
-    default:
-      return state;
-  }
+function userReducer(state = initialState, action) {
+
+    switch (action.type) {
+case POST_USER:
+      return {
+        ...state,
+        userDetail: action.payload,
+      };
+ }
 };
 
 export default userReducer;
