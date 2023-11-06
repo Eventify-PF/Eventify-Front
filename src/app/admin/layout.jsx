@@ -1,3 +1,4 @@
+ 
 import AdminFooter from "@/components/AdminLayout/AdminFooter";
 import AdminHeader from "@/components/AdminLayout/AdminHeader";
 import AdminSidebar from "@/components/AdminLayout/AdminSidebar";
@@ -19,3 +20,4 @@ const AdminLayout = ({ children }) => {
   };
 
 export default AdminLayout
+ 
