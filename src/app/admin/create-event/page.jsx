@@ -31,7 +31,7 @@ const EventPage = () => {
 
   useEffect(() => {
     dispatch(getAllEventTypes());
-  }, []);
+  }, [dispatch]);
 
   const handleChange = (e) => {
     setEvent({ ...event, [e.target.name]: e.target.value });
@@ -72,7 +72,7 @@ const EventPage = () => {
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
-        <h2 className="text-2xl mb-4">ENTER EVENT DATA</h2>
+        <h2 className="text-2xl mb-4">Enter Event Data!</h2>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Title:

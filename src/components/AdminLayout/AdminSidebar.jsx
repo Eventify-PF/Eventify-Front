@@ -14,12 +14,12 @@ const AdminSidebar = () => {
             </li>
             <li>
               <Link href="/admin/create-event" className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
-                <span className="ml-3">Events</span>
+                <span className="ml-3">Create Events</span>
               </Link>
             </li>
             <li>
               <Link href="/admin/create-ticket" className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
-                <span className="ml-3">Tickets</span>
+                <span className="ml-3">Add Tickets</span>
               </Link>
             </li>
           </ul>
