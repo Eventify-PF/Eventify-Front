@@ -1,27 +1,61 @@
 "use client"
 import { DecreaseQuantity, DeleteCart, IncreaseQuantity } from "@/redux/action/cartAction";
 import { useSelector, useDispatch } from 'react-redux';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
+
 const CartPage = () => {
-  const router = useRouter()
+
+  const router = useRouter();
   const dispatch = useDispatch();
   const ticketsState = useSelector((state) => state.cartReducer);
-  const {carts} = ticketsState
+  const allEvents = useSelector((state) => state.eventReducer);
+  const {events} = allEvents;
+  const {carts} = ticketsState;
   const ListCart = [];
   let TotalCart = 0;
-  Object.keys(carts).forEach(function(item){
-    TotalCart+=carts[item].quantity * carts[item].price;
-    ListCart.push(carts[item]);
-  })
+
+  const handleAddMore = () => {
+    const eventID = events.find((event) => event.title === carts[0].title).id;
+    router.push(`/event/${eventID}`);
+  }
+  
+    Object.keys(carts).forEach(function(item){
+      TotalCart+=carts[item].quantity * carts[item].price;
+      ListCart.push(carts[item]);
+    })
+  
+  const handleFinish = async () => {
+  let listCartItems = ListCart.map((item) => {
+    return {
+      id:item.id,
+      name: item.name,
+      image: item.image,
+      price: item.price,
+      quantity: item.quantity,
+    }
+  });
+    try {
+  const response  = await axios.post('http://localhost:3001/mercadoPago',listCartItems);
+  const data = response.data;
+  window.location.href = data;
+  } catch (error) {
+    console.log(error);
+  }
+ }
 
   if(carts.length === 0) return router.push('/event')
+
+  console.log(TotalCart);
+  console.log(ListCart);
+
   return (
     <>
       <h1 className="mb-10 text-center text-2xl font-bold">Tickets</h1>
       <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
         <div className="rounded-lg md:w-2/3">
           {ListCart.map((eventTicket, key) => (
-            <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+            <div key={key} className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
             <img src={eventTicket.image} alt="product-image" className="w-full rounded-lg sm:w-40" />
             <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
               <div className="mt-5 sm:mt-0">
@@ -55,14 +89,15 @@ const CartPage = () => {
                 <p className="mb-1 text-lg font-bold">{Number(TotalCart).toLocaleString('en-US')} $</p>
               </div>
             </div>
+
             <div className="flex gap-3">
-              <button className="transition-colors text-sm bg-blue-600 hover:bg-blue-700 p-2 rounded-sm w-full text-white text-hover shadow-md">
+              <button className="transition-colors text-sm bg-blue-600 hover:bg-blue-700 p-2 rounded-sm w-full text-white text-hover shadow-md" onClick={handleFinish}>
                   FINISH
-              </button>
-                  
+              </button>                 
             </div>
+
             <div className="flex gap-3 mt-2">
-              <button className="transition-colors text-sm bg-white border border-gray-600 p-2 rounded-sm w-full text-gray-700 text-hover shadow-md">
+              <button className="transition-colors text-sm bg-white border border-gray-600 p-2 rounded-sm w-full text-gray-700 text-hover shadow-md" onClick={handleAddMore}>
                 ADD MORE TICKET
               </button>
             </div>
