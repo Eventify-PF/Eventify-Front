@@ -9,7 +9,7 @@ import Login from '../../app/api/auth/loginButton'
 import Logout from '../../app/api/auth/logoutButton'
 import { useUser } from '@auth0/nextjs-auth0/client';
 import { useDispatch } from 'react-redux';
-import { postUser } from '@/redux/action/userAction'; 
+import { postUser } from '../../redux/action/userAction'; 
 import { useEffect } from 'react';
 import { useState } from 'react';
 

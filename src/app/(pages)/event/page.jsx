@@ -2,13 +2,12 @@
 'use client';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import Container from "@/components/Container";
-import { setCurrentPage } from "@/redux/action/eventActions";
-import EventCards from "@/components/EventCards/EventCards";
-import Filters from "@/components/Filters/Filters";
-import SearchBar from "@/components/SearchBar/SearchBar";
-import { fetchEvents, searchEvent, filterEventsByType, filterEventsByDate, filterEventsByTypeAndDate, getEvents } from "@/redux/action/eventActions";
-import { getAllEventTypes } from "@/redux/action/eventTypeActions";
+import Container from "../../../components/Container";
+import { setCurrentPage } from "../../../redux/action/eventActions";
+import EventCards from "../../../components/EventCards/EventCards";
+import SearchBar from "../../../components/SearchBar/SearchBar";
+import { fetchEvents, searchEvent, filterEventsByType, filterEventsByDate, filterEventsByTypeAndDate, getEvents } from "../../../redux/action/eventActions";
+import { getAllEventTypes } from "../../../redux/action/eventTypeActions";
 import Pagination from "@mui/material/Pagination";
  
 
