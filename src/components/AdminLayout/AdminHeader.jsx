@@ -6,7 +6,7 @@ const AdminHeader = () => {
      <div className="px-3 py-3 lg:px-5 lg:pl-3">
       <div className="flex items-center justify-between my-3 mx-5 ">
         <div className="flex items-center justify-start">
-          <Link href="/">
+          <Link href="/event">
             <h2 className="font-black text-2xl text-center text-orange-500 uppercase">EventifyPro</h2>
           </Link>
         </div>

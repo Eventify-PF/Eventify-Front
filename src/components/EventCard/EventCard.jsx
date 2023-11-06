@@ -11,7 +11,7 @@ const EventCard = ({event}) => {
 			<Link href={`/event/${event.id}`}>
 				<img className="h-56 lg:h-60 w-full object-cover" src={event.image} alt={event.title}/>
 			</Link>
-			<div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-bordershadow-lg shadow-blue-gray-500/40">
+			<div className="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg hover:shadow-xl transform transition duration-500">
 				<div className="px-3 py-4 text-center">
 					<h2 className="text-gray-950 font-bold text-xl mb-3 hover:text-gray-900 hover:cursor-pointer">{event.title}</h2>
 				</div>
