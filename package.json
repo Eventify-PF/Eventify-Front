@@ -27,6 +27,7 @@
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
+    "@types/node": "^20.8.10",
     "autoprefixer": "^10",
     "eslint": "^8",
     "eslint-config-next": "13.5.6",

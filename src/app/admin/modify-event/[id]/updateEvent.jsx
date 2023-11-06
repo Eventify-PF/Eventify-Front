@@ -1,5 +1,5 @@
+ 
 "use client";
-
 import { updateEvent } from "@/redux/action/eventActions";
 import { getAllEventTypes } from "@/redux/action/eventTypeActions";
 import validateForm from "@/utils/validateForm";
@@ -169,3 +169,4 @@ const EditEventForm = ({ detailEvent }) => {
 };
 
 export default EditEventForm;
+ 
