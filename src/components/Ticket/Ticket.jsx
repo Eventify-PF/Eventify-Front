@@ -1,4 +1,4 @@
-import { AddCart } from '@/redux/action/cartAction';
+
 import React, { useState } from 'react';
 
 const Ticket = ({ticket, addTicket}) => {
