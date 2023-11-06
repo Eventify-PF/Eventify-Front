@@ -16,8 +16,7 @@ export const FILTER_EVENTS = "FILTER_EVENTS";
 export const FILTER_EVENTS_FAILURE = "FILTER_EVENTS_FAILURE";
  
 export const CREATE_EVENT = "CREATE_EVENT";
-export const UPDATE_EVENT = "UPDATE_EVENT";
 export const GET_EVENTS = "GET_EVENTS";
-export const GET_ALL_EVENTS = "GET_ALL_EVENTS";
 
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+

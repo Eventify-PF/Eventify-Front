@@ -8,7 +8,6 @@ export const getAllEventTypes = () => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(`/eventTypes`);
-
       return dispatch({
         type: GET_EVENTTYPES,
         payload: data,
