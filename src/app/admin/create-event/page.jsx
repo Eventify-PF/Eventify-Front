@@ -1,5 +1,4 @@
 "use client";
-
 import { createEvent } from "../../../redux/action/eventActions";
 import {
   createEventType,

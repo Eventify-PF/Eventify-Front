@@ -4,6 +4,7 @@ const loadEvent = async (id) => {
   const data = await res.json();
   return data;
 };
+
 export default async function EventPage({ params }) {
   const detailEvent = await loadEvent(params.id);
 

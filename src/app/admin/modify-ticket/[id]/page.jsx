@@ -5,6 +5,7 @@ const loadTicket = async (id) => {
   return data.tickets[0];
 };
 
+
 export default async function EventPage({ params }) {
   const detailTicket = await loadTicket(params.id);
 
