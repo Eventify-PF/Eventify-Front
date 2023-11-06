@@ -1,5 +1,5 @@
+ 
 "use client";
-
 const { updateTicket } = require("@/redux/action/ticketActions");
 
 import { useState } from "react";
@@ -115,3 +115,4 @@ const EditTicketForm = ({ detailTicket }) => {
 };
 
 export default EditTicketForm;
+ 

@@ -1,3 +1,4 @@
+ 
 "use client";
 import EventList from "@/components/Dashboard/EventList";
 import { getAllEvents } from "@/redux/action/eventActions";
@@ -20,3 +21,4 @@ const page = () => {
 };
 
 export default page;
+ 

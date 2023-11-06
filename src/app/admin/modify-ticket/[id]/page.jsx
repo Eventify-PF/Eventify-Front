@@ -1,3 +1,4 @@
+ 
 import EditTicketForm from "./updateTicket";
 const loadTicket = async (id) => {
   const res = await fetch(`http://localhost:3001/events/${id}`);
@@ -10,3 +11,4 @@ export default async function EventPage({ params }) {
 
   return <EditTicketForm detailTicket={detailTicket} />;
 }
+ 
