@@ -13,10 +13,12 @@ import {
   FILTER_EVENTS_FAILURE,
   CREATE_EVENT,
   GET_EVENTS,
+  GET_ALL_EVENTS,
   SET_CURRENT_PAGE,
 } from "../action-type/eventConstans";
 
 const initialState = {
+  allEvents: [],
   events: [],
   eventsBackup: [],
   pagination: {
@@ -32,6 +34,8 @@ const eventReducer = (state = initialState, action) => {
         events: action.payload,
         eventsFilter: action.payload,
       };
+    case GET_ALL_EVENTS:
+      return { ...state, allEvents: action.payload };
     case CREATE_EVENT:
       return {
         ...state,
@@ -131,5 +135,3 @@ const eventReducer = (state = initialState, action) => {
 };
 
 export default eventReducer;
-
-

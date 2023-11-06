@@ -7,7 +7,9 @@ import {
   SEARCH_EVENT_FAILED,
   CREATE_EVENT,
   GET_EVENTS,
+  GET_ALL_EVENTS,
   SET_CURRENT_PAGE,
+  UPDATE_EVENT,
   FILTER_TYPE,
   FILTER_TYPE_FAILURE,
   FILTER_DATE,
@@ -16,8 +18,6 @@ import {
   FILTER_EVENTS_FAILURE
 } from "../action-type/eventConstans";
 import axios from "axios";
-
-
 
 export const getEvents = () => {
   return async (dispatch) => {
@@ -30,6 +30,13 @@ export const createEvent = (event) => {
   return async (dispatch) => {
     const { data } = await axios.post("/events/", event);
     return dispatch({ type: CREATE_EVENT, payload: data });
+  };
+};
+
+export const updateEvent = (event) => {
+  return async (dispatch) => {
+    const { data } = await axios.put("/events/", event);
+    return dispatch({ type: UPDATE_EVENT, payload: data });
   };
 };
 
@@ -48,13 +55,18 @@ export const fetchEvents = () => {
   };
 };
 
+export const getAllEvents = () => {
+  return async (dispatch) => {
+    const { data } = await axios.get("/events/all");
+    dispatch({ type: GET_ALL_EVENTS, payload: data });
+  };
+};
+
 export const searchEvent = (name) => {
   return async (dispatch) => {
     try {
       dispatch({ type: SEARCH_EVENT_REQUEST });
-      const response = await axios.get(
-        `/events?name=${name}`
-      );
+      const response = await axios.get(`/events?name=${name}`);
       return dispatch({
         type: SEARCH_EVENT_SUCCESS,
         payload: response.data,
