@@ -1,3 +1,4 @@
+ 
 "use client";
 import { createEvent } from "../../../redux/action/eventActions";
 import {
@@ -183,3 +184,4 @@ const EventPage = () => {
 };
 
 export default EventPage;
+ 
