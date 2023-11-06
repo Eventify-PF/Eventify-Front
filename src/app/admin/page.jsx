@@ -5,7 +5,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const EventsPage = () => {
+const page = () => {
   const dispatch = useDispatch();
   const events = useSelector((state) => state.eventReducer.allEvents);
 
@@ -19,4 +19,4 @@ const EventsPage = () => {
   );
 };
 
-export default EventsPage;
+export default page;
