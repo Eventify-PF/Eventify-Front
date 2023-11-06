@@ -1,7 +1,7 @@
 import { Nunito } from 'next/font/google'
-import { Providers } from "@/redux/provider";
+import { Providers } from "../redux/provider";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
-import Navbar from '@/components/Navbar/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 import './globals.css'
 
 export const metadata = {
@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
      <body className={font.className}>
       <UserProvider>
           <Providers>
+          <Navbar/>
             {children}
           </Providers>
       </UserProvider>

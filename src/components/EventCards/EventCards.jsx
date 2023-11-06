@@ -8,4 +8,5 @@ const EventCards = ({events}) => {
 	);
 };
 
+
 export default EventCards;

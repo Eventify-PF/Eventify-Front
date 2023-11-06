@@ -4,8 +4,8 @@ import { createEvent } from "../../../redux/action/eventActions";
 import {
   createEventType,
   getAllEventTypes,
-} from "@/redux/action/eventTypeActions";
-import validateForm from "@/utils/validateForm";
+} from "../../../redux/action/eventTypeActions";
+import validateForm from "../../../utils/validateForm";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
