@@ -2,14 +2,14 @@ import axios from "axios";
 import { POST_USER, GET_USER, UPDATE_USER } from "../action-type/userConstans";
 
 
-const endpoint = `http://localhost:3001/users`;
+//const endpoint = `http://localhost:3001/users`;
 //const endpoint = `https://server-eventifypro.onrender.com`;
 
 export function postUser(userData) {
   console.log(userData);
     return async (dispatch) => {
       try {
-        const { data } = await axios.post(`${endpoint}/register`, userData);;
+        const { data } = await axios.post("/users/register", userData);;
         dispatch({
           type: POST_USER,
           payload: data,
@@ -24,7 +24,7 @@ export function postUser(userData) {
 
   export const getUser = (id) => {
     return async (dispatch) => {
-      const { data } = await axios.get(`http://localhost:3001/users/${id}`);
+      const { data } = await axios.get(`/users/${id}`);
       return dispatch({ type: GET_USER, payload: data });
     };
   };
@@ -32,7 +32,7 @@ export function postUser(userData) {
 
   export const updateUser = (user, id) => {
     return async (dispatch) => {
-      const { data } = await axios.put(`http://localhost:3001/users/${id}`, user);
+      const { data } = await axios.put(`/users/${id}`, user);
       return dispatch({ type: UPDATE_USER, payload: data });
     };
   };
