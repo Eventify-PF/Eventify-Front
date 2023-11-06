@@ -1,3 +1,4 @@
+ 
 import EditEventForm from "./updateEvent";
 const loadEvent = async (id) => {
   const res = await fetch(`http://localhost:3001/events/${id}`);
@@ -12,3 +13,4 @@ export default async function EventPage({ params }) {
 
   return <EditEventForm detailEvent={detailEvent} />;
 }
+ 
