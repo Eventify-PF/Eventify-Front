@@ -1,6 +1,6 @@
  
 import EditEventForm from "./updateEvent";
-const loadEvent = async (id) => {
+const LoadEvent = async (id) => {
   const res = await fetch(`http://localhost:3001/events/${id}`);
   // const res = await fetch(`  https://server-eventifypro.onrender.com/events/${id}`);
   
@@ -9,7 +9,7 @@ const loadEvent = async (id) => {
 };
 
 export default async function EventPage({ params }) {
-  const detailEvent = await loadEvent(params.id);
+  const detailEvent = await LoadEvent(params.id);
 
   return <EditEventForm detailEvent={detailEvent} />;
 }
