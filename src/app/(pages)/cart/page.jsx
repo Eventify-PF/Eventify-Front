@@ -1,5 +1,5 @@
 "use client"
-import { DecreaseQuantity, DeleteCart, IncreaseQuantity } from "@/redux/action/cartAction";
+import { DecreaseQuantity, DeleteCart, IncreaseQuantity } from "../../../redux/action/cartAction";
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation'
 const CartPage = () => {

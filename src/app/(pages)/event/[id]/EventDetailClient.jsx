@@ -1,9 +1,9 @@
 "use client";
-import Container from "@/components/Container";
-import { formatearFecha } from "@/helpers";
-import Tickets from "@/components/Tickets/Tickets";
+import Container from "../../../../components/Container";
+import { formatearFecha } from "../../../../helpers/index";
+import Tickets from "../../../../components/Tickets/Tickets";
 import { useDispatch } from "react-redux";
-import { AddCart } from "@/redux/action/cartAction";
+import { AddCart } from "../../../../redux/action/cartAction";
 
 const EventDetailClient = ({ detailEvent }) => {
   const { tickets } = detailEvent;
