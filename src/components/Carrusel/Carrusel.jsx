@@ -5,7 +5,8 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useState,useEffect} from 'react';
 import {BsChevronCompactLeft, BsChevronCompactRight} from 'react-icons/bs';
 import {RxDotFilled} from 'react-icons/rx';
-import { fetchEvents } from '@/redux/action/eventActions';
+import { fetchEvents } from '../../redux/action/eventActions';
+
 
 const Carrusel = () => {
     const eventState = useSelector((state) => state.eventReducer);
