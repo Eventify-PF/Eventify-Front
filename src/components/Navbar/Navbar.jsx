@@ -5,12 +5,10 @@ import Logo from '../Logo';
 import MenuItem from './MenuItem';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import Login from '../../app/api/auth/loginButton'
-import Logout from '../../app/api/auth/logoutButton'
-import { useUser } from '@auth0/nextjs-auth0/client';
+ 
+ 
 import { useDispatch } from 'react-redux';
-import { postUser } from '../../redux/action/userAction'; 
-import { useEffect } from 'react';
+ 
 import { useState } from 'react';
 
 
@@ -71,21 +69,10 @@ const Navbar = () => {
 									</div>
 									</div>
 								</div>
-								{isLoading ? (
-                    <div>Cargando...</div>
-                  ) : user ? (
-                    <div className="flex items-center"> {/* Contenedor flex para la imagen y el botón */}
-                      <img
-                        src={user.picture}
-                        alt="Avatar"
-                        className="w-10 h-10 rounded-full mr-2" 
-                      />
-                      <Logout /> 
-                    </div>
-                      
-                  ) : (
-                    <Login /> 
-                  )}
+								 
+      
+              
+        
 							</div>
 						</div>
 					</div>
