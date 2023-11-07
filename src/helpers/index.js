@@ -1,5 +1,5 @@
 export const formatearFecha = (fecha) => {
-  const partesFecha = fecha?.split("-");
+  const partesFecha = fecha.split("-");
   const año = parseInt(partesFecha[0], 10);
   const mes = parseInt(partesFecha[1], 10);
   const dia = parseInt(partesFecha[2], 10);
